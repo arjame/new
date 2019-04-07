@@ -113,6 +113,35 @@
             android:textSize="16sp"
             android:textColor="@color/colorBlack"
             />
+
+        <TextView
+            android:id="@+id/txthours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="open hours:" />
+
+        <TextView
+            android:id="@+id/txtfrom"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:text="from" />
+
+        <TextView
+            android:id="@+id/txtto"
+            android:layout_width="46dp"
+            android:layout_height="wrap_content"
+            android:text="to" />
+        <TextView
+            android:id="@+id/txt2from"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:text="from" />
+        <TextView
+            android:id="@+id/txt2to"
+            android:layout_width="46dp"
+            android:layout_height="wrap_content"
+            android:text="to" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
