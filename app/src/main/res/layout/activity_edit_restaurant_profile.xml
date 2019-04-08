@@ -273,6 +273,16 @@
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="49dp"
                 android:text="Select a day:" />
+
+            <Button
+                android:id="@+id/btnsave"
+                android:layout_width="121dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="9dp"
+                android:layout_marginBottom="158dp"
+                android:text="save" />
         </RelativeLayout>
 
         <Button
