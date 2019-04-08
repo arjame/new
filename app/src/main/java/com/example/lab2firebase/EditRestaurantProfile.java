@@ -13,53 +13,49 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class EditRestaurantProfile extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
-   TextView textView1, textView2, textView3, textView4;
-
     int i, j, k, l;
+    boolean a,b,c,d;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        textView1=(TextView) findViewById(R.id.txthourfrom);
-        textView2=(TextView) findViewById(R.id.txthourto);
-        textView3=(TextView) findViewById(R.id.txthourfrom2);
-        textView4=(TextView) findViewById(R.id.txthourto2);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_restaurant_profile);
         Button btntimepicker1, btntimepicker2, btntimepicker3, btntimepicker4;
         final DialogFragment timepicker1, timepicker2, timepicker3, timepicker4;
+        a=b=c=d=false;
         timepicker1 = timepicker2 = timepicker3 = timepicker4 = new TimePicker();
         btntimepicker1 = findViewById(R.id.btntimepicker1);
         btntimepicker1.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 timepicker1.show(getSupportFragmentManager(), "timepicker");
-            }
+                a=true;
 
+            }
         });
         btntimepicker2 = findViewById(R.id.btntimepicker2);
         btntimepicker2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {  a=false;
+            b=true;
                 timepicker2.show(getSupportFragmentManager(), "timepicker");
             }
         });
         btntimepicker3 = findViewById(R.id.btntimepicker3);
         btntimepicker3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { a=false;b=false; c=true;
                 timepicker3.show(getSupportFragmentManager(), "timepicker");
             }
         });
         btntimepicker4 = findViewById(R.id.btntimepicker4);
         btntimepicker4.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { a=false;b=false;c=false;d=true;
                 timepicker4.show(getSupportFragmentManager(), "timepicker");
-
             }
-              
         });
         //*********Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -88,11 +84,28 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
     }
 
     //End of code related to the toolbar
-    @Override
-    public void onTimeSet(android.widget.TimePicker View, int hourOfDay, int minute) {
+
+
+        @Override
+        public void onTimeSet (android.widget.TimePicker View,int hourOfDay, int minute){
         i = hourOfDay;
         j = minute;
-    }
-        
+        TextView textView1 = (TextView) findViewById(R.id.txthourfrom);
+        TextView textView2 =(TextView) findViewById(R.id.txthourto);
+        TextView textView3=(TextView) findViewById(R.id.txthourfrom2);
+        TextView textView4=(TextView) findViewById(R.id.txthourto2);
+        if (a==true){
+        textView1.setText("From:  "+'\n'+ hourOfDay+":" + minute);
 
-}
+    }   else if (b==true){
+         textView2.setText(" To  " +'\n'+ hourOfDay+":" + minute);
+        }     else if (c==true) {
+            textView3.setText("From:  "+'\n'+ hourOfDay+":" + minute);
+        }else if (d==true){
+                textView4.setText("To:  "+'\n'+ hourOfDay+":" + minute);
+            }
+            else return;
+        }
+    }
+
+

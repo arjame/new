@@ -127,10 +127,11 @@
             android:layout_marginTop="5dp">
 
             <RelativeLayout
-                android:layout_width="371dp"
-                android:layout_height="171dp"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center_vertical"
+                android:layout_width="374dp"
+                android:layout_height="187dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="92dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -165,7 +166,10 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="94dp"
                     android:layout_marginTop="97dp"
-                    android:text="From:      " />
+
+                    android:text="From:"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18dp" />
 
                 <Button
                     android:id="@+id/btntimepicker2"
@@ -209,7 +213,9 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="92dp"
                     android:layout_marginTop="29dp"
-                    android:text="From:   " />
+                    android:text="From:   "
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/txthourto"
@@ -219,7 +225,10 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="3dp"
-                    android:text="to" />
+                    android:text="to:"
+                    android:textColor="@color/colorAccent"
+
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/txthourto2"
@@ -229,7 +238,9 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="101dp"
                     android:layout_marginEnd="8dp"
-                    android:text="to" />
+                    android:text="to"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18dp" />
 
             </RelativeLayout>
 
@@ -249,8 +260,9 @@
                 android:layout_marginBottom="-55dp"
                 android:dropDownWidth="match_parent"
                 android:entries="@array/weekdays"
-                android:spinnerMode="dialog"
-                android:textAlignment="center" />
+                android:fadingEdge="horizontal"
+                android:spinnerMode="dropdown"
+                android:textAlignment="inherit" />
 
             <TextView
                 android:id="@+id/textView7"
