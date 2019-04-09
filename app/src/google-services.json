@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "1068201731709",
-    "firebase_url": "https://resturanter-f2fa7.firebaseio.com",
-    "project_id": "resturanter-f2fa7",
-    "storage_bucket": "resturanter-f2fa7.appspot.com"
+    "project_number": "1057243740978",
+    "firebase_url": "https://aaaaa-e3dac.firebaseio.com",
+    "project_id": "aaaaa-e3dac",
+    "storage_bucket": "aaaaa-e3dac.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1068201731709:android:dac120d0f68cda3b",
+        "mobilesdk_app_id": "1:1057243740978:android:dac120d0f68cda3b",
         "android_client_info": {
           "package_name": "com.example.lab2firebase"
         }
@@ -16,14 +16,14 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCdEp2TApbX4_ebmSYjY9ZQzY-OAK_0ySA"
+          "current_key": "AIzaSyDFPkwrHFxG8XNKYxK7j2TJMGanOjSZ_Ik"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1068201731709-809bk11207v5jc2niri0v3kqc43j51iv.apps.googleusercontent.com",
+              "client_id": "1057243740978-j7vkdpn7bjq981gr9amd5i8h1h5tfeg6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

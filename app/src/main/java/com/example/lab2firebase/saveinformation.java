@@ -1,13 +1,16 @@
 package com.example.lab2firebase;
 
 public class saveinformation {
-    public String hourfrom;
+    public String hour;
     public saveinformation(){
-
+        saveinformation saveinformation=new saveinformation();
     }
 
-    public saveinformation(String hourfrom) {
-        this.hourfrom = hourfrom;
+
+
+    public saveinformation(String hour) {
+        this.hour = hour;
+
     }
 
 }

@@ -2,24 +2,23 @@ package com.example.lab2firebase;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.internal.api.FirebaseNoSignedInUserException;
 
 public class EditRestaurantProfile extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
-    private DatabaseReference reference;
+    FirebaseDatabase database=FirebaseDatabase.getInstance();
+    private DatabaseReference reference=database.getReference("child");
     private TextView txt1,txt2,txt3,txt4;
     private Button savebutton;
 
@@ -30,13 +29,13 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        reference.setValue("hiiii");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_restaurant_profile);
 
         txt1=(TextView) findViewById(R.id.txthourfrom);
         savebutton=(Button) findViewById(R.id.btnsave);
-        reference=FirebaseDatabase.getInstance().getReference();
         Button btntimepicker1, btntimepicker2, btntimepicker3, btntimepicker4;
         final DialogFragment timepicker1, timepicker2, timepicker3, timepicker4;
         a=b=c=d=false;
@@ -137,8 +136,9 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
     {
         String hour=txt1.getText().toString().trim();
         saveinformation saveinformation=new saveinformation(hour);
-        reference.child("child").setValue(saveinformation);
-        Toast.makeText(this,hour,Toast.LENGTH_SHORT).show();
+        reference.setValue(saveinformation);
+        reference.setValue("hiiii");
+        Toast.makeText(this,"Data saved",Toast.LENGTH_SHORT).show();
 
 
     }
