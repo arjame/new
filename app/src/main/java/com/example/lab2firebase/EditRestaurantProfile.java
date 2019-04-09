@@ -9,18 +9,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class EditRestaurantProfile extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+public class EditRestaurantProfile extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, AdapterView.OnItemSelectedListener {
     FirebaseDatabase database=FirebaseDatabase.getInstance();
     private DatabaseReference reference=database.getReference("child");
     private TextView txt1,txt2,txt3,txt4;
     private Button savebutton;
+    private String day;
 
     int i, j, k, l;
     boolean a,b,c,d;
@@ -28,13 +32,22 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        reference.setValue("hiiii");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_restaurant_profile);
+        Spinner weekdays=findViewById(R.id.spinner);
+        String record="";
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.weekdays,android.R.layout.simple_list_item_1);
+        adapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
+        weekdays.setAdapter(adapter);
+        weekdays.setOnItemSelectedListener(this);
+
+
+
 
         txt1=(TextView) findViewById(R.id.txthourfrom);
+        txt2=(TextView)findViewById(R.id.txthourto);
+        txt3=(TextView)findViewById(R.id.txthourfrom2);
+        txt4=(TextView)findViewById(R.id.txthourto2);
         savebutton=(Button) findViewById(R.id.btnsave);
         Button btntimepicker1, btntimepicker2, btntimepicker3, btntimepicker4;
         final DialogFragment timepicker1, timepicker2, timepicker3, timepicker4;
@@ -74,9 +87,8 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
         savebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (v==savebutton) {
+
                     storeuserinf();
-                }
             }
         });
 
@@ -90,6 +102,7 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
         // Write  to the database
 
     }
+
 
     //********** what toolbar is doing
     @Override
@@ -121,29 +134,48 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
         TextView textView3=(TextView) findViewById(R.id.txthourfrom2);
         TextView textView4=(TextView) findViewById(R.id.txthourto2);
         if (a==true){
-            textView1.setText("From:  "+'\n'+ hourOfDay+":" + minute);
+            textView1.setText("From:  "+ hourOfDay+":" + minute);
 
         }   else if (b==true){
-            textView2.setText(" To  " +'\n'+ hourOfDay+":" + minute);
+
+            textView2.setText(" To  "+ hourOfDay+":" + minute);
         }     else if (c==true) {
-            textView3.setText("From:  "+'\n'+ hourOfDay+":" + minute);
+
+            textView3.setText("From:  "+ hourOfDay+":" + minute);
         }else if (d==true){
-            textView4.setText("To:  "+'\n'+ hourOfDay+":" + minute);
+
+            textView4.setText("To:  "+ hourOfDay+":" + minute);
         }
         else return;
     }
     private void  storeuserinf()
     {
-        String hour=txt1.getText().toString().trim();
-        saveinformation saveinformation=new saveinformation(hour);
-        reference.setValue(saveinformation);
-        reference.setValue("hiiii");
+        String weekday,hour1,hour2,hour3,hour4;
+
+        weekday=day;
+        hour1=txt1.getText().toString().trim();
+        hour2=txt2.getText().toString().trim();
+        hour3=txt3.getText().toString().trim();
+        hour4=txt4.getText().toString().trim();
+        saveinformation saveinformation=new saveinformation(weekday,hour1,hour2,hour3,hour4);
+        reference.child("resturanter,working days and hours").child(weekday).setValue(saveinformation);
+
         Toast.makeText(this,"Data saved",Toast.LENGTH_SHORT).show();
 
 
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    day=parent.getItemAtPosition(position).toString();
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
 
 
