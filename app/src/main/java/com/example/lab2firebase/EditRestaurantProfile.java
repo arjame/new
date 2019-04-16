@@ -21,12 +21,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class EditRestaurantProfile extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, AdapterView.OnItemSelectedListener {
     FirebaseDatabase database=FirebaseDatabase.getInstance();
-    private DatabaseReference reference=database.getReference("child");
+    private DatabaseReference reference=database.getReference("Resturants");
+    //saving hours variables
     private TextView txt1,txt2,txt3,txt4;
+    //saving name phone mobile address
+    private TextView txt5,txt6,txt7,txt8;
     private Button savebutton;
     private String day;
-
-    int i, j, k, l;
     boolean a,b,c,d;
 
 
@@ -48,6 +49,11 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
         txt2=(TextView)findViewById(R.id.txthourto);
         txt3=(TextView)findViewById(R.id.txthourfrom2);
         txt4=(TextView)findViewById(R.id.txthourto2);
+        txt5=(TextView)findViewById(R.id.edt_nameRestaurant);
+        txt6=(TextView)findViewById(R.id.edt_phoneRestaurant);
+        txt7=(TextView)findViewById(R.id.edt_mibileresturant);
+        txt8=(TextView)findViewById(R.id.edt_address);
+
         savebutton=(Button) findViewById(R.id.btnsave);
         Button btntimepicker1, btntimepicker2, btntimepicker3, btntimepicker4;
         final DialogFragment timepicker1, timepicker2, timepicker3, timepicker4;
@@ -127,8 +133,6 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
 
     @Override
     public void onTimeSet (android.widget.TimePicker View,int hourOfDay, int minute){
-        i = hourOfDay;
-        j = minute;
         TextView textView1 = (TextView) findViewById(R.id.txthourfrom);
         TextView textView2 =(TextView) findViewById(R.id.txthourto);
         TextView textView3=(TextView) findViewById(R.id.txthourfrom2);
@@ -150,15 +154,24 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
     }
     private void  storeuserinf()
     {
-        String weekday,hour1,hour2,hour3,hour4;
+        String weekday,hour1,hour2,hour3,hour4,name,phone,mobile,address;
 
         weekday=day;
         hour1=txt1.getText().toString().trim();
         hour2=txt2.getText().toString().trim();
         hour3=txt3.getText().toString().trim();
         hour4=txt4.getText().toString().trim();
-        saveinformation saveinformation=new saveinformation(weekday,hour1,hour2,hour3,hour4);
-        reference.child("resturanter,working days and hours").child(weekday).setValue(saveinformation);
+        name=txt5.getText().toString().trim();
+        phone=txt6.getText().toString().trim();
+        mobile=txt7.getText().toString().trim();
+        address=txt8.getText().toString().trim();
+
+
+        saveinformation saveinformation=new saveinformation(name,phone,mobile,address);
+        savedaysandhours savedaysandhours=new savedaysandhours(weekday,hour1,hour2,hour3,hour4);
+        reference.child(name).child("working days and hours").child(weekday).setValue(savedaysandhours);
+        reference.child(name).child("info").setValue(saveinformation);
+
 
         Toast.makeText(this,"Data saved",Toast.LENGTH_SHORT).show();
 
@@ -174,6 +187,9 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+    public void readFromDatabase(){
 
     }
 }

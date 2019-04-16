@@ -1,17 +1,15 @@
 package com.example.lab2firebase;
 
 public class saveinformation {
-   public String Weekday;
-   public String hourfrom,hourto,hourfrom1,hourto1;
+  String restname,restphone,restmobile,restaddress;
    public saveinformation(){
 
    }
 
-    public saveinformation(String weekday, String hourfrom, String hourto, String hourfrom1, String hourto1) {
-        Weekday = weekday;
-        this.hourfrom = hourfrom;
-        this.hourto = hourto;
-        this.hourfrom1 = hourfrom1;
-        this.hourto1 = hourto1;
+    public saveinformation(String restname,String restphone,String restmobile,String restaddress) {
+        this.restname=restname;
+        this.restphone=restphone;
+        this.restmobile=restmobile;
+        this.restaddress=restaddress;
     }
 }

@@ -24,7 +24,7 @@
     <string name="restaurant_profile">Restaurant profile</string>
     <string name="edit_restaurant_profile">Edit restaurant profile</string>
     <string name="discount"> Discount: </string>
-    <string name="restaurant_name"> Shab Neshin Restaurant </string>
+    <string name="restaurant_name"> Resturant Name </string>
     <string name="discount_tooltip">Discount should be in percent</string>
     <string name="short_description">   Enter short description about food,ingredients.It is useful for people who are allergic, or follow special diet.  </string>
     <string name="available_quantity">Available quantity * :</string>
@@ -71,53 +71,11 @@
     <string-array name="weekdays">
         <item>Monday</item>
         <item>Tuesday</item>
-        <item>Wednsday</item>
+        <item>Wednesday</item>
         <item>Thursday</item>
         <item>Friday</item>
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
-    <string-array name="fromhours">
-        <item>7:00</item>
-        <item>8:00</item>
-        <item>9:00</item>
-        <item>10:00</item>
-        <item>11:00</item>
-        <item>12:00</item>
-        <item>13:00</item>
-        <item>14:00</item>
-        <item>15:00</item>
-        <item>16:00</item>
-        <item>17:00</item>
-        <item>18:00</item>
-        <item>19:00</item>
-        <item>20:00</item>
-        <item>21:00</item>
-        <item>22:00</item>
-        <item>23:00</item>
 
-    </string-array>
-    */<string-array name="tohours">
-        <item>7:00</item>
-        <item>8:00</item>
-        <item>9:00</item>
-        <item>10:00</item>
-        <item>11:00</item>
-        <item>12:00</item>
-        <item>13:00</item>
-        <item>14:00</item>
-        <item>15:00</item>
-        <item>16:00</item>
-        <item>17:00</item>
-        <item>18:00</item>
-        <item>19:00</item>
-        <item>20:00</item>
-        <item>21:00</item>
-        <item>22:00</item>
-        <item>23:00</item>
-        <item>24:00</item>
-
-
-
-    </string-array>
 </resources>

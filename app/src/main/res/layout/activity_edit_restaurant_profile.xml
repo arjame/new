@@ -94,6 +94,7 @@
                         android:textColor="@color/colorBlack"
                         android:textSize="15sp"/>
                     <EditText
+                        android:id="@+id/edt_mibileresturant"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="phone"
@@ -104,15 +105,25 @@
                         android:textSize="15sp"/>
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <TextView
+
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/location"
                         android:drawableStart="@drawable/ic_location_on_black_24dp"
+                        android:text="@string/location"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/edt_address"
+                        android:layout_width="260dp"
+                        android:layout_height="wrap_content"
                         android:textColor="@color/colorBlack"
                         android:textSize="15sp"/>
 
