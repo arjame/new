@@ -2,7 +2,9 @@ package com.example.lab2firebase;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,6 +28,8 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
     private TextView txt1,txt2,txt3,txt4;
     //saving name phone mobile address
     private TextView txt5,txt6,txt7,txt8;
+//saving totall info
+    private TextView txt9,txt10,txt11,txt12,txt13,txt14,txt15;
     private Button savebutton;
     private String day;
     boolean a,b,c,d;
@@ -36,7 +40,6 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_restaurant_profile);
         Spinner weekdays=findViewById(R.id.spinner);
-        String record="";
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.weekdays,android.R.layout.simple_list_item_1);
         adapter.setDropDownViewResource(android.R.layout.simple_expandable_list_item_1);
         weekdays.setAdapter(adapter);
@@ -51,8 +54,15 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
         txt4=(TextView)findViewById(R.id.txthourto2);
         txt5=(TextView)findViewById(R.id.edt_nameRestaurant);
         txt6=(TextView)findViewById(R.id.edt_phoneRestaurant);
-        txt7=(TextView)findViewById(R.id.edt_mibileresturant);
+        txt7=(TextView)findViewById(R.id.edt_mobileresturant);
         txt8=(TextView)findViewById(R.id.edt_address);
+        txt9=(TextView) findViewById(R.id.txt_monday);
+        txt10=(TextView) findViewById(R.id.txt_tuesday);
+        txt11=(TextView) findViewById(R.id.txt_wednesday);
+        txt12=(TextView) findViewById(R.id.txt_thursday);
+        txt13=(TextView) findViewById(R.id.txt_friday);
+        txt14=(TextView) findViewById(R.id.txt_saturday);
+        txt15=(TextView) findViewById(R.id.txt_sunday);
 
         savebutton=(Button) findViewById(R.id.btnsave);
         Button btntimepicker1, btntimepicker2, btntimepicker3, btntimepicker4;
@@ -91,6 +101,7 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
             }
         });
         savebutton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
 
@@ -138,24 +149,33 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
         TextView textView3=(TextView) findViewById(R.id.txthourfrom2);
         TextView textView4=(TextView) findViewById(R.id.txthourto2);
         if (a==true){
-            textView1.setText("From:  "+ hourOfDay+":" + minute);
+            textView1.setText(""+ hourOfDay+":" + minute);
 
         }   else if (b==true){
 
-            textView2.setText(" To  "+ hourOfDay+":" + minute);
+            textView2.setText(""+ hourOfDay+":" + minute);
         }     else if (c==true) {
 
-            textView3.setText("From:  "+ hourOfDay+":" + minute);
+            textView3.setText(""+ hourOfDay+":" + minute);
         }else if (d==true){
 
-            textView4.setText("To:  "+ hourOfDay+":" + minute);
+            textView4.setText(""+ hourOfDay+":" + minute);
         }
         else return;
     }
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void  storeuserinf()
     {
-        String weekday,hour1,hour2,hour3,hour4,name,phone,mobile,address;
+        String weekday,hour1,hour2,hour3,hour4,name,phone,mobile,address,Monday,Tuesday,Wednesday;
+        String Thursday,Friday,Saturday,Sunday;
 
+        Monday="Monday";
+        Tuesday="Tuesday";
+        Wednesday="Wednesday";
+        Thursday="Thursday";
+        Friday="Friday";
+        Saturday="Saturday";
+        Sunday="Sunday";
         weekday=day;
         hour1=txt1.getText().toString().trim();
         hour2=txt2.getText().toString().trim();
@@ -171,8 +191,28 @@ public class EditRestaurantProfile extends AppCompatActivity implements TimePick
         savedaysandhours savedaysandhours=new savedaysandhours(weekday,hour1,hour2,hour3,hour4);
         reference.child(name).child("working days and hours").child(weekday).setValue(savedaysandhours);
         reference.child(name).child("info").setValue(saveinformation);
-
-
+        if(weekday.equals(Monday))
+        {
+            txt9.setText(weekday + "from: " + hour1 + " to:" + hour2 + "Evening from: " + hour3 + " to: " + hour4);
+        }else if(weekday.equals(Tuesday))
+        {
+            txt10.setText(weekday + "from: " + hour1 + " to:" + hour2 + "Evening from: " + hour3 + " to: " + hour4);
+        }else if(weekday.equals(Wednesday))
+        {
+            txt11.setText(weekday + "from: " + hour1 + " to:" + hour2 + "Evening from: " + hour3 + " to: " + hour4);
+        }else if(weekday.equals(Thursday))
+        {
+            txt12.setText(weekday + "from: " + hour1 + " to:" + hour2 + "Evening from: " + hour3 + " to: " + hour4);
+        }else if(weekday.equals(Friday))
+        {
+            txt13.setText(weekday + "from: " + hour1 + " to:" + hour2 + "Evening from: " + hour3 + " to: " + hour4);
+        }else if(weekday.equals(Saturday))
+        {
+            txt14.setText(weekday + "from: " + hour1 + " to:" + hour2 + "Evening from: " + hour3 + " to: " + hour4);
+        }else if(weekday.equals(Sunday))
+        {
+            txt15.setText(weekday + "from: " + hour1 + " to:" + hour2 + "Evening from: " + hour3 + " to: " + hour4);
+        }
         Toast.makeText(this,"Data saved",Toast.LENGTH_SHORT).show();
 
 
